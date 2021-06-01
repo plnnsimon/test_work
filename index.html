@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <select id="select">
+            <option value="sphere" id="sphere">Sphere</option>
+            <option value="cube" id="cube">Cube</option>
+            <option value="cone" id="cone">Cone</option>
+        </select>
+        <input type="text" placeholder="scale" id="scale" />
+        <input type="button" value="Create" id="create" />
+    </div>
+    
+    <canvas class="webgl"></canvas>
+    <div class="info"></div>
+    <script src="three.js"></script>
+    <script type="module" src="app.js"></script>
+</body>
+</html>

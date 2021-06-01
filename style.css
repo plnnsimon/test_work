@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(192, 192, 192);
+    height: 100vh;
+    position: absolute;
+    overflow-x: hidden;
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    margin: 10px;
+    overflow: hidden;
+}
+
+.uuid {
+    border: 1px solid black;
+    background: rgb(255, 255, 255);
+    color: black;
+    margin-left: 10px;
+    width: 350px;
+}
+
+.info {
+    display: flex;
+    /* flex-direction: row; */
+    flex-wrap: wrap;
+}
+
+.remove {
+    height: 20px;
+    border-radius: 50%;
+    padding: 3px;
+}
+
+.webgl {
+    position: relative;
+    top: 0;
+    left: 0;
+    outline: none;
+    mix-blend-mode: exclusion;
+}
