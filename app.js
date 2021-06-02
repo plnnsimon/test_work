@@ -37,23 +37,16 @@ pointLight.position.y = 2
 pointLight.position.z = 3
 scene.add(pointLight)
 
-
-// Input scale + material
-
+// Material
 let material = new THREE.MeshPhongMaterial( {color: 0xffffff, emissive: 0x708090, shininess: 0} );
-document.getElementById('create').onclick = createFunc;
 
-let numbers = [];
+// Create button
+document.getElementById('create').onclick = createFunc;
 
 function addScale () {
     let scale = document.getElementById('scale');
     scale = scale.value.trim().split(' ', 3);
-    // numbers = numbers.concat(scale);
-    // let newNumbers = numbers;
-    // let numArr = newNumbers.map(number => Number(number))
     let scaleArr = scale.map(el => Number(el));
-    // console.log(numArr);
-    // return numArr;
     console.log(scaleArr);
     return scaleArr;
 }
