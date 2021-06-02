@@ -29,6 +29,8 @@ body {
     display: flex;
     /* flex-direction: row; */
     flex-wrap: wrap;
+    position: relative;
+    z-index: 2;
 }
 
 .remove {
@@ -43,4 +45,5 @@ body {
     left: 0;
     outline: none;
     mix-blend-mode: exclusion;
+    z-index: 1;
 }

@@ -39,50 +39,81 @@ scene.add(pointLight)
 
 
 // Input scale + material
-let scale = document.getElementById('scale');
+
 let material = new THREE.MeshPhongMaterial( {color: 0xffffff, emissive: 0x708090, shininess: 0} );
 document.getElementById('create').onclick = createFunc;
-    
+
+let numbers = [];
+
+function addScale () {
+    let scale = document.getElementById('scale');
+    scale = scale.value.trim().split(' ', 3);
+    // numbers = numbers.concat(scale);
+    // let newNumbers = numbers;
+    // let numArr = newNumbers.map(number => Number(number))
+    let scaleArr = scale.map(el => Number(el));
+    // console.log(numArr);
+    // return numArr;
+    console.log(scaleArr);
+    return scaleArr;
+}
+
+// objects position 
+function positionFunc (shape) {
+    shape.position.x = Math.random() * 10 - 5;
+    shape.position.y = Math.random() * 5;
+    shape.position.z = Math.random() * 10 - 5;
+}
+
 // Objects
+// Sphere
 let sphereObj = function () {
     if (scale.value == 0) {
         alert('scale is null')
+    } else if (scale.value === NaN) {
+        alert('Not A number')
     } else {
-        let geometrySphere = new THREE.SphereGeometry( parseInt(scale.value) );
+        let arr = addScale();
+        
+        let geometrySphere = new THREE.SphereGeometry( arr[0], arr[1], arr[2] );
         const sphere = new THREE.Mesh( geometrySphere, material );
-        sphere.position.x = Math.random() * -5;
-        sphere.position.y = Math.random() * 5;
-        sphere.position.z = Math.random() * 5;
+        
+        positionFunc(sphere)
         scene.add( sphere );
         createInfo(sphere);
+        console.log(sphere);
         scale.value = '';
     }
 }
+// Cube
 let cubeObj = function () {
     if (scale.value == 0) {
         alert('scale is null')
     } else {
-        let geometryBox = new THREE.BoxGeometry( parseInt(scale.value));
+        let arr = addScale();
+        let geometryBox = new THREE.BoxGeometry( arr[0], arr[1], arr[2]);
         const cube = new THREE.Mesh( geometryBox, material );
-        cube.position.x = Math.random() * -5;
-        cube.position.y = Math.random() * 5;
-        cube.position.z = Math.random() * -5;
+        
+        positionFunc(cube);
         scene.add( cube );
         createInfo(cube);
         scale.value = '';
     }
 }
+// Cone
 let coneObj = function () {
     if (scale.value == 0) {
         alert('scale is null')
     } else {
-        let geometryCone = new THREE.ConeGeometry( parseInt(scale.value) );
+        let arr = addScale();
+        let geometryCone = new THREE.ConeGeometry( arr[0], arr[1], arr[2] );
         const cone = new THREE.Mesh( geometryCone, material );
-        cone.position.x = Math.random() * -5;
-        cone.position.y = Math.random() * 5;
-        cone.position.z = Math.random() * 5;
+        positionFunc(cone);
+        cone.rotation.z = Math.random() * 5;
+        cone.rotation.x = Math.random() * 5;
+        cone.rotation.y = Math.random() * 5;
         scene.add( cone );
-        
+        console.log(scale.value[1]);
         createInfo(cone);
         scale.value = '';
     }
