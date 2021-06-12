@@ -45,9 +45,15 @@ document.getElementById('create').onclick = createFunc;
 
 function addScale () {
     let scale = document.getElementById('scale');
-    scale = scale.value.trim().split(' ', 3);
-    let scaleArr = scale.map(el => Number(el));
-    console.log(scaleArr);
+    scale = scale.value;
+    let scaleArr;
+    if (scale.includes(',')) {
+        scale = scale.trim().split(',', 3);
+        scaleArr = scale.map(el => Number(el));
+    } else {
+        scale = scale.trim().split(' ', 3);
+        scaleArr = scale.map(el => Number(el));
+    }
     return scaleArr;
 }
 
@@ -68,13 +74,12 @@ let sphereObj = function () {
     } else {
         let arr = addScale();
         
-        let geometrySphere = new THREE.SphereGeometry( arr[0], arr[1], arr[2] );
+        let geometrySphere = new THREE.SphereGeometry( ...arr );
         const sphere = new THREE.Mesh( geometrySphere, material );
         
         positionFunc(sphere)
         scene.add( sphere );
         createInfo(sphere);
-        console.log(sphere);
         scale.value = '';
     }
 }
@@ -84,7 +89,7 @@ let cubeObj = function () {
         alert('scale is null')
     } else {
         let arr = addScale();
-        let geometryBox = new THREE.BoxGeometry( arr[0], arr[1], arr[2]);
+        let geometryBox = new THREE.BoxGeometry( ...arr );
         const cube = new THREE.Mesh( geometryBox, material );
         
         positionFunc(cube);
@@ -99,14 +104,13 @@ let coneObj = function () {
         alert('scale is null')
     } else {
         let arr = addScale();
-        let geometryCone = new THREE.ConeGeometry( arr[0], arr[1], arr[2] );
+        let geometryCone = new THREE.ConeGeometry( ...arr );
         const cone = new THREE.Mesh( geometryCone, material );
         positionFunc(cone);
         cone.rotation.z = Math.random() * 5;
         cone.rotation.x = Math.random() * 5;
         cone.rotation.y = Math.random() * 5;
         scene.add( cone );
-        console.log(scale.value[1]);
         createInfo(cone);
         scale.value = '';
     }
